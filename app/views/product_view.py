@@ -3,9 +3,11 @@ from tkinter import ttk, messagebox
 from models.product import Product
 
 class ProductView:
-    def __init__(self, parent):
+    def __init__(self, parent, supplier_view = None):
         self.frame = ttk.Frame(parent)
+        self.products = []
         self.categories = []
+        self.supplier_view = supplier_view
         self.setup_ui()
         
     def setup_ui(self):
@@ -77,6 +79,9 @@ class ProductView:
     def add_product_to_tree(self, product):
         self.tree.insert("", "end", values=(product.name, product.price, product.stock, product.category.name if product.category else ""))
 
+    def get_all_products(self):
+        return [product for product in self.products]
+
     def register_product(self):
         # Validar formulario
         if not self.validate_form() or len(self.categories) < 1:
@@ -95,7 +100,11 @@ class ProductView:
         
         # Añadir el producto al árbol
         self.add_product_to_tree(new_product)
+        self.products.append(new_product)
         
+        if self.supplier_view:
+            self.supplier_view.update_products(self.get_all_products()) 
+
         # Limpiar el formulario
         self.clear_form()
 

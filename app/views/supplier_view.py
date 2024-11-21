@@ -4,6 +4,7 @@ from tkinter import ttk
 class SupplierView:
     def __init__(self, parent):
         self.frame = ttk.Frame(parent)
+        self.products = [] 
         self.setup_ui()
         
     def setup_ui(self):
@@ -26,7 +27,7 @@ class SupplierView:
         
         # Product Assignment
         ttk.Label(form_frame, text="Productos:").grid(row=3, column=0, sticky="w")
-        self.products_listbox = tk.Listbox(form_frame, selectmode=tk.MULTIPLE)
+        self.products_listbox = tk.Listbox(form_frame, selectmode=tk.MULTIPLE, height=10)
         self.products_listbox.grid(row=3, column=1, padx=5, pady=2)
         
         # Buttons
@@ -47,9 +48,41 @@ class SupplierView:
         self.tree.heading("Productos", text="# Productos")
         self.tree.pack(expand=True, fill="both")
         
+    def update_products(self, products):
+        self.products = products
+        self.products_listbox.delete(0, tk.END)  # Limpiar lista actual
+        for product in products:
+            self.products_listbox.insert(tk.END, product.name)  #
+
     def register_supplier(self):
-        # Implementation for registering a supplier
-        pass
+        name = self.name_entry.get().strip()
+        address = self.address_entry.get().strip()
+        phone = self.phone_entry.get().strip()
+        
+        if not name or not address or not phone:
+            return tk.messagebox.showerror("Error", "Todos los campos son obligatorios.")
+        
+        # Obtener productos seleccionados
+        selected_indices = self.products_listbox.curselection()
+        selected_products = [self.products[i] for i in selected_indices]
+        
+        if not selected_products:
+            return tk.messagebox.showerror("Error", "Debe seleccionar al menos un producto.")
+        
+        # Crear proveedor (opcional: agregar lógica de almacenamiento o base de datos)
+        supplier_data = {
+            "name": name,
+            "address": address,
+            "phone": phone,
+            "products": selected_products
+        }
+        
+        # Agregar proveedor al árbol
+        self.tree.insert("", tk.END, values=(name, address, phone, len(selected_products)))
+        
+        # Limpiar formulario
+        self.clear_form()
+        tk.messagebox.showinfo("Éxito", "Proveedor registrado exitosamente.")
         
     def clear_form(self):
         self.name_entry.delete(0, tk.END)

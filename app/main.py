@@ -1,9 +1,5 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from models.product import Product
-from models.category import Category
-from models.supplier import Supplier
-from models.warehouse import Warehouse
 from views.product_view import ProductView
 from views.category_view import CategoryView
 from views.supplier_view import SupplierView
@@ -21,9 +17,9 @@ class InventoryManagementSystem:
         self.notebook.pack(expand=True, fill='both', padx=10, pady=5)
         
         # Initialize views
-        self.product_view = ProductView(self.notebook)
-        self.category_view = CategoryView(self.notebook, product_view=self.product_view)
         self.supplier_view = SupplierView(self.notebook)
+        self.product_view = ProductView(self.notebook, self.supplier_view)
+        self.category_view = CategoryView(self.notebook, self.product_view)
         self.warehouse_view = WarehouseView(self.notebook)
         self.reports_view = ReportsView(self.notebook)
         
