@@ -13,6 +13,7 @@ Instalar e iniciar
 python app/main.py
 ```
 
-## Autor
+## Autores
 
-[Juan Sebastian Castañeda Burbano](https://github.com/jusecabu)
+- Juan Sebastian Castañeda Burbano
+- Daniel Steven Chavez
