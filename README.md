@@ -1,20 +1,30 @@
-# Tercer parcial | inventarios
+# Tercer Parcial | Inventarios
 
-Tercer parcial de la materia __`Programación 1`__: 
+## Descripción
+Este proyecto es un sistema de gestión de inventarios desarrollado en Python utilizando la biblioteca `tkinter` para la creación de interfaces gráficas. El sistema permite a los usuarios gestionar productos, categorías, proveedores y bodegas, proporcionando funcionalidades para registrar, actualizar y visualizar datos relacionados con el inventario. 
 
-Se debe desarrollar un programa para la empresa __`PQR`__ que se dedica a la fabricación de ventanas en aluminio que les ayude a mejorar su proceso de cotizaciones que hoy en día es manual.
+El objetivo del proyecto es proporcionar una solución práctica y eficiente para la administración de inventarios como parte del tercer parcial académico.
 
----
+## Características
+- Gestión de productos: registro, asignación a categorías y proveedores, y visualización del stock.
+- Gestión de categorías: creación de categorías y asignación de productos a las mismas.
+- Gestión de proveedores: registro de proveedores y asociación con productos.
+- Gestión de bodegas: almacenamiento de productos con control de capacidad.
+- Reportes: generación de reportes básicos basados en los datos almacenados.
 
 ## Uso
+El programa utiliza `tkinter`, que está incluido en la instalación por defecto de Python, por lo que no es necesario instalar dependencias adicionales.
 
-No se debe instalar nada porque tkinter se puede ejecutar con la instalación por defecto de python
+### Unix
+```bash
+python3 app/main.py
+```
 
+### Windows
 ```bash
 python app/main.py
 ```
 
 ## Autores
-
 - Juan Sebastian Castañeda Burbano
 - Daniel Steven Chavez
