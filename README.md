@@ -8,6 +8,8 @@ Se debe desarrollar un programa para la empresa __`PQR`__ que se dedica a la fab
 
 ## Uso
 
+No se debe instalar nada porque tkinter se puede ejecutar con la instalación por defecto de python
+
 Instalar e iniciar
 ```bash
 python app/main.py
